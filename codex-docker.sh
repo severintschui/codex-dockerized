@@ -10,13 +10,15 @@ BUILD_IMAGE=0
 
 usage() {
     cat <<"EOF"
+Starts an interactive codex session with access only to the current folder (default) or a specified path. Configuration and authentication is shared with the local codex installation.
+
 Usage:
-    codex-docker.sh [-c/--config /path/to/.codex/] [-p/--project /path/to/project] [-f/--force-build] [-v/--version] [-- codex args...]
+    codex-docker.sh [-c/--config /path/to/.codex] [-p/--project /path/to/project] [-f/--force-build] [-v/--version] [-- codex args...]
 
 Examples:
     ./codex-docker.sh
     ./codex-docker.sh --project ~/src/myrepo
-    ./codex-docker.sh --config ~/.codex/auth.json -- chat "Explain this repo"
+    ./codex-docker.sh --config ~/.codex -- chat "Explain this repo"
     ./codex-docker.sh -- chat "Explain this repo"
 EOF
 }
@@ -87,7 +89,7 @@ if [[ ! -d "${PROJECT_DIR}" ]]; then
     exit 2
 fi
 
-# Validate auth file
+# Validate config dir
 if [[ ! -d "${CODEX_CONFIG_DIR}" ]]; then
     echo "Config dir not found: ${CODEX_CONFIG_DIR}" >&2
     exit 1
