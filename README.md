@@ -4,21 +4,26 @@ The `codex-docker.sh` script starts an interactive Codex session with access onl
 
 ## Arguments
 
-- -p / --project
-  Project folder to be mounted into the container. Defaults to current working directory
+- `-p`, `--project`
+  
+  Project folder to be mounted into the container. Defaults to current working directory.
 
-- -c / --config
-  Configuration folder mounted into the container. Defaults to `$HOME/.codex`
+- `-c`, `--config`
+  
+  Configuration folder mounted into the container. Defaults to `$HOME/.codex`.
 
-- -f / --force-build
-  Forces a rebuild of the docker image. This can be used to update the installed Codex CLI package.
+- `-f`, `--force-build`
+  
+  Forces a rebuild of the Docker image. This can be used to update the installed Codex CLI package.
 
-- -h / --help
-  Prints a description and usage examples
+- `-h`, `--help`
+  
+  Prints a description and usage examples.
 
-- -v / --version
-  Prints the current version of the script
+- `-v`, `--version`
+  
+  Prints the current version of the script.
 
-- [-- codex args]
-  Arguments after `--` are forwarded to the Codex CLI
-
+- `--` + codex args
+  
+  Arguments after `--` are forwarded to the Codex CLI.
