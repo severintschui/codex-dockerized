@@ -103,8 +103,7 @@ CODEX_CONFIG_DIR="$(cd "${CODEX_CONFIG_DIR}" && pwd)"
 
 # Check whether image exists, build if not
 if [[ "${BUILD_IMAGE}" -eq 1 ]] || ! docker image inspect "${IMAGE}" >/dev/null 2>&1; then
-    echo "Docker image '${IMAGE}' not found. Building..."
-    docker build -t "${IMAGE}" "${SCRIPT_DIR}"
+    docker build --no-cache -t "${IMAGE}" "${SCRIPT_DIR}"
 fi
 
 
