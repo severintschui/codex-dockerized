@@ -2,7 +2,8 @@
 
 IMAGE="codex-cli:local"
 VERSION="0.0.1"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_PATH="$(realpath "${BASH_SOURCE[0]}")"
+SCRIPT_DIR="$(cd "$(dirname "${SCRIPT_PATH}")" && pwd)"
 
 PROJECT_DIR="${PWD}"
 CODEX_CONFIG_DIR="${HOME}/.codex"
@@ -85,14 +86,14 @@ done
 
 # Validate project dir
 if [[ ! -d "${PROJECT_DIR}" ]]; then
-    echo "Error: project directory does not exist: ${PROJECT_DIR}" >&2
+    echo "Project dir not found: ${PROJECT_DIR}" >&2
     exit 2
 fi
 
 # Validate config dir
 if [[ ! -d "${CODEX_CONFIG_DIR}" ]]; then
     echo "Config dir not found: ${CODEX_CONFIG_DIR}" >&2
-    exit 1
+    exit 2
 fi
 
 # Normalize paths
